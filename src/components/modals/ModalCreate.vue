@@ -194,12 +194,6 @@ export default {
 
   @media (max-width: 650px) {
     z-index: 2;
-    @media (max-height: 725px) {
-      gap: 0;
-      .modalCreate__box {
-        gap: 0;
-      }
-    }
   }
 
   &__box {
