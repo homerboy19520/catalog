@@ -35,6 +35,8 @@
     >
       <svg
         class="modalCreate__icon"
+        width="30px"
+        height="16px"
         id="right-arrow-foward-sign"
         style="enable-background: new 0 0 15.698 8.706"
         viewBox="0 0 15.698 8.706"
