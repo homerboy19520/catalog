@@ -123,6 +123,10 @@ export default {
 
   &__item {
     padding: 10px 0 10px 16px;
+
+    @media (max-width: 650px) {
+      padding: 20px 46px 20px 16px;
+    }
   }
 
   &__active {
@@ -130,7 +134,9 @@ export default {
     padding: 10px 28px 10px 16px;
 
     @media (max-width: 650px) {
-      padding: 20px 60px 20px 16px;
+      padding: 20px 46px 20px 16px;
+      min-width: 170px;
+      box-sizing: border-box;
     }
   }
 }
