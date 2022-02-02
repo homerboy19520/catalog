@@ -248,7 +248,7 @@ export default {
     width: 30px;
     top: 0;
     right: -32px;
-    transform: translate(100%, 0);
+    transform: translate(100%, 15px);
     transition: transform 0.2s ease-out;
     cursor: pointer;
 
@@ -259,7 +259,7 @@ export default {
     }
 
     &.m-rotate {
-      transform: scaleX(-1) translate(55px, 0);
+      transform: scaleX(-1) translate(55px, 5px);
     }
   }
 }

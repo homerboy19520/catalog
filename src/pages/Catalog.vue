@@ -1,40 +1,42 @@
 <template>
   <div class="catalog">
-    <ModalCreate @pushDate="addData" />
-    <div class="catalog-wrapper">
-      <Select @activeSelect="addIndex" />
-      <Product
-        class="product-item"
-        v-for="(item, index) in formatData"
-        :key="index"
-        :description="item.description"
-        :link="item.link"
-        :name="item.name"
-        :price="Number(item.price)"
-        :index="index"
-        @deleteProduct="deleteProduct"
-      />
+    <div class="catalog__container" v-show="isOpen">
+      <ModalCreate @pushDate="addData"/>
+      <div class="catalog-wrapper">
+        <Select @activeSelect="addIndex"/>
+        <Product
+            class="product-item"
+            v-for="(item, index) in formatData"
+            :key="index"
+            :description="item.description"
+            :link="item.link"
+            :name="item.name"
+            :price="Number(item.price)"
+            :index="index"
+            @deleteProduct="deleteProduct"
+        />
+      </div>
     </div>
     <transition name="loading">
       <div
-        class="catalog-preloader"
-        :class="{ 'm-active': isLoading }"
-        v-show="isLoading"
-        v-body-scroll-lock="isLoading"
+          class="catalog-preloader"
+          :class="{ 'm-active': isLoading }"
+          v-show="isLoading"
+          v-body-scroll-lock="isLoading"
       >
         <div class="catalog-preloader__box">
           <div class="catalog-preloader__circle">
             <div class="catalog-preloader__wrapper">
               <svg
-                role="img"
-                focusable="false"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 14 14"
+                  role="img"
+                  focusable="false"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 14 14"
               >
                 <path
-                  fill="#43a047"
-                  d="M1.00000001 7.71134025l3.83505154 3.8041237 8.16494844-8.16494844-.86597938-.86597938L4.83505155 9.7835052 1.86597939 6.81443303z"
+                    fill="#43a047"
+                    d="M1.00000001 7.71134025l3.83505154 3.8041237 8.16494844-8.16494844-.86597938-.86597938L4.83505155 9.7835052 1.86597939 6.81443303z"
                 />
               </svg>
             </div>
@@ -113,7 +115,7 @@ export default {
     sortToName: function () {
       this.products.sort(function (a, b) {
         let nameA = a.name.toLowerCase(),
-          nameB = b.name.toLowerCase();
+            nameB = b.name.toLowerCase();
         if (nameA < nameB) return -1;
         if (nameA > nameB) return 1;
         return 0;
@@ -122,7 +124,7 @@ export default {
     commonSort() {
       this.products.sort(function (a, b) {
         let nameA = a.name,
-          nameB = b.name;
+            nameB = b.name;
         if (nameA < nameB) return -1;
         if (nameA > nameB) return 1;
         return 0;
@@ -152,6 +154,13 @@ export default {
           return this.products;
         default:
           return this.products;
+      }
+    },
+    isOpen: function () {
+      if (this.isLoading) {
+        return false;
+      } else {
+        return true;
       }
     },
   },
@@ -194,13 +203,15 @@ body {
 }
 
 .catalog {
-  position: relative;
-  padding: 32px 32px;
-  display: flex;
-  gap: 16px;
+  &__container {
+    position: relative;
+    padding: 32px 32px;
+    display: flex;
+    gap: 16px;
 
-  @media (max-width: 600px) {
-    flex-direction: column;
+    @media (max-width: 600px) {
+      flex-direction: column;
+    }
   }
 }
 
@@ -279,6 +290,11 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    @media (max-width: 650px) {
+      width: 100px;
+      height: 100px;
+    }
   }
 
   &__circle,
